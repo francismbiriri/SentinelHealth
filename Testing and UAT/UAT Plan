@@ -1,0 +1,95 @@
+# 🧪 User Acceptance Testing (UAT) Plan  
+## SentinelHealth Logistics Platform  
+### Surgical Kit Inventory & HIPAA Compliance Modernization
+
+---
+
+## 1. Purpose of UAT
+
+The purpose of User Acceptance Testing (UAT) is to confirm that the **SentinelHealth Logistics Platform** satisfies approved business requirements and is fit for operational use.
+
+UAT validates that the system:
+- Proactively identifies low surgical kit stock
+- Enforces HIPAA-compliant, de-identified logistics workflows
+- Accurately monitors kit servicing and compliance status
+- Produces consistent and reconcilable analytics across SQL and Tableau
+
+All tests are executed in alignment with the **Business Requirements Document (BRD)** and approved delivery standards.
+
+---
+
+## 2. UAT Scope
+
+### In Scope
+- Inventory replenishment logic
+- HIPAA de-identification controls
+- Kit servicing and compliance tracking
+- Geospatial visualization of hospital stock urgency
+- Shipping cost analytics and reporting accuracy
+
+### Out of Scope
+- Courier operational performance
+- Physical warehouse handling processes
+- External hospital system integrations
+
+---
+
+## 3. Test Environment
+
+**Database**
+- Microsoft SQL Server (Dedicated Test Environment)
+
+**Reporting & Visualization**
+- Tableau Dashboard connected to validated test data
+
+**Test Management & Evidence**
+- Jira for defect logging and status tracking
+- Confluence for test cases, screenshots, and sign-off records
+
+---
+
+## 4. UAT Test Scenarios
+
+| Test Case ID | Scenario | Test Action | Expected Outcome |
+|--------------|----------|-------------|------------------|
+| UAT-01 | HIPAA De-Identification | Create a new shipment record and inspect all logistics tables for PII fields. | No patient names or identifiers are present. Only `Case_Ref_Number` is stored and visible. |
+| UAT-02 | Low Stock Alert Logic | Set `Quantity_OnHand = 1` for a kit with `Reorder_Level = 2`. | The replenishment SQL view flags the kit as **Low Stock** and eligible for proactive replenishment. |
+| UAT-03 | Service Compliance Monitoring | Update `Last_ServiceDate` to exceed 180 days from the current date. | The kit is flagged as **NON-COMPLIANT – Service Overdue**. |
+| UAT-04 | Geospatial Accuracy | Load SQL output into Tableau and validate hospital positioning. | Hospital locations display accurately using stored `Geo_Coordinates`. |
+| UAT-05 | Shipping Cost Analysis | Filter dashboard by `Shipment_Type` (`Standard` vs `Expedited`). | Tableau correctly calculates and displays shipping cost differences. |
+
+---
+
+## 5. Acceptance Criteria
+
+UAT is considered **successfully completed** when all of the following criteria are met:
+
+- All HIPAA-related test cases achieve a **100% pass rate**
+- Low stock alerts are validated and approved by the **Warehouse Manager**
+- Tableau dashboards reconcile **exactly** with underlying SQL views
+- All defects are logged, resolved, and formally closed in Jira
+- UAT evidence and approvals are documented in Confluence
+
+---
+
+## 6. Roles & Responsibilities
+
+| Role | Responsibility |
+|------|----------------|
+| Business Analyst | Test coordination, validation, and traceability |
+| Warehouse Manager | Operational validation and sign-off |
+| Compliance Officer | HIPAA controls verification |
+| Data / Systems Analyst | SQL validation and data reconciliation |
+
+---
+
+## 7. UAT Sign-Off
+
+Successful sign-off confirms that:
+- Business and compliance requirements have been met
+- Data accuracy and reporting integrity are validated
+- The system is approved for production deployment
+
+*Formal approval is recorded in Confluence.*
+
+---
