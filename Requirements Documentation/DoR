@@ -1,1 +1,29 @@
+## 🟢 Definition of Ready (DoR)
 
+A Jira ticket is considered **Ready** to move into **In Progress** only when **all** of the following criteria are met:
+
+### 🧩 Business & Stakeholder Alignment
+- The **Warehouse Manager** has formally confirmed that the **Low Stock threshold** is defined as:  
+  `Quantity_OnHand ≤ 2`
+- Business rules related to replenishment and urgency classification are documented and approved.
+
+### 🗂️ Data Architecture Readiness
+- The **Entity Relationship Diagram (ERD)** is finalized and approved.
+- The **Shipments** table is confirmed as the **junction (fact) table**, linking:
+  - `Hospital_ID`
+  - `Kit_ID`
+- Cardinality and key constraints are clearly defined.
+
+### 🔐 Compliance & Risk Controls
+- A **No-PII protocol** is established and approved.
+- All kit assignments and logistics workflows must reference a **`Case_Ref_Number`**.
+- Patient names or direct identifiers are explicitly prohibited from logistics and courier datasets to ensure **HIPAA compliance**.
+
+### 🛠️ Technical Readiness
+- SQL Server environments are provisioned and accessible.
+- Permissions allow:
+  - Creation of tables and views
+  - Execution of joins and aggregations
+  - Export of query results (CSV) for Tableau consumption
+
+---
