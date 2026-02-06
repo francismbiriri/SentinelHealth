@@ -1,0 +1,92 @@
+# Business Requirements Document (BRD)  
+## SentinelHealth Logistics  
+### Surgical Kit Inventory & HIPAA Compliance Modernization
+
+**Author:** Francis Mbiriri  
+**Date:** 6 February 2026  
+
+---
+
+## 1. Project Overview
+
+The objective of this project is to transition **SentinelHealth** from a **manual, reactive surgical kit inventory model** to an **automated, data-driven logistics system**.
+
+The current operating model results in:
+- Excessive use of high-cost expedited shipping
+- Limited inventory visibility across hospitals and warehouses
+- Elevated HIPAA compliance risk due to the presence of patient-identifiable information (PII) in logistics workflows
+
+The proposed solution focuses on:
+- **Reducing shipping costs** through proactive replenishment
+- **Ensuring 100% HIPAA compliance** by removing PII from the supply chain
+- **Improving operational readiness** for scheduled surgical procedures
+
+---
+
+## 2. Stakeholders
+
+| Stakeholder | Role |
+|------------|------|
+| Warehouse Manager | Primary user of inventory alerts and stock urgency dashboards |
+| Sales Agents | Initiate surgical kit requests on behalf of hospitals |
+| Courier Partners | External vendors responsible for kit delivery |
+| Compliance Officer | Audits workflows and validates HIPAA de-identification controls |
+
+---
+
+## 3. Functional Requirements (FR)
+
+The following functional requirements define **what the system must do**, based on the approved ERD and business rules.
+
+| ID | Requirement | Description / Logic Source |
+|----|------------|-----------------------------|
+| FR-01 | Automated Replenishment | The system shall query the `Kits` table every 24 hours to identify records where `Quantity_OnHand ≤ Reorder_Level`. |
+| FR-02 | HIPAA De-identification | The system must use `Case_Ref_Number` as the primary reference for hospital cases. Patient names or direct identifiers shall not be stored in logistics tables. |
+| FR-03 | Geospatial Tracking | The system shall map hospital locations using `Geo_Coordinates` to visualize stock urgency and fulfillment priorities. |
+| FR-04 | Service Compliance Monitoring | The system must flag kits where the current date exceeds **180 days** from `Last_ServiceDate`. |
+
+---
+
+## 4. Non-Functional Requirements (NFR)
+
+### 🔐 Security & Compliance
+- All shipping documentation (electronic or printed) must be validated as **PII-free** before shipment closure.
+- Logistics datasets must comply with HIPAA de-identification standards at all times.
+
+### ⏱️ Availability
+- The Tableau **Logistics Command Center** dashboard must be available by **6:00 AM** local time to support warehouse operations.
+
+### 🔗 Data Integrity
+- The `Shipments` table must enforce a strict **one-to-many relationship** with the `Kits` table.
+- Referential integrity must be maintained to ensure audit accuracy and traceability.
+
+---
+
+## 5. Success Metrics (KPIs)
+
+The success of the SentinelHealth Logistics Modernization initiative will be measured using the following KPIs:
+
+- **80% reduction** in expedited shipping costs by increasing usage of standard courier paths
+- **Zero PII leaks**, verified through monthly audits of the `Shipments` table
+- **100% surgical kit availability** for scheduled procedures through proactive replenishment and servicing
+
+---
+
+## 6. Key Assumptions & Constraints
+
+- Hospitals provide accurate location data for geospatial mapping
+- Courier partners consume only de-identified shipment data
+- Inventory thresholds are approved and maintained by warehouse leadership
+
+---
+
+## 7. Approval & Sign-Off
+
+Final approval of this BRD confirms alignment on:
+- Business objectives
+- Functional and non-functional requirements
+- Compliance and audit expectations
+
+*Formal sign-off captured via Confluence and Jira.*
+
+---
