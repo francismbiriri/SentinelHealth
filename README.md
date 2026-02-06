@@ -1,50 +1,149 @@
-# SentinelHealth: Surgical Kit Logistics & HIPAA Compliance Modernization
+# SentinelHealth  
+## Surgical Kit Logistics & HIPAA Compliance Modernization
 
-##📌 Project Overview
+---
 
-This project addresses a critical supply chain and data privacy crisis for SentinelHealth, a medical device provider. The "As-Is" state relied on manual communication and reactive inventory management, leading to high shipping overheads and HIPAA violations. This "To-Be" solution implements a system-governed logistics model using SQL Server, Tableau, and Agile documentation.
+## 📌 Project Overview
 
-##🛠️ Tech Stack
+**SentinelHealth** is a business analysis and systems modernization case study addressing a critical **surgical kit logistics, cost, and HIPAA compliance challenge** for a medical device provider.
 
-Database: Microsoft SQL Server (DDL, Views, Joins)
+The **As-Is state** relied on:
+- Manual communication between hospitals, warehouses, and couriers
+- Reactive inventory replenishment
+- Exposure of patient-identifiable information in shipping workflows
 
-Visualization: Tableau Public (Geospatial Mapping & Cost Analysis)
+These gaps resulted in **excessive expedited shipping costs**, **operational delays**, and **HIPAA compliance risks**.
 
-Project Management: Jira (Agile/Scrum), Confluence
+The **To-Be solution** introduces a **system-governed logistics and data model**, supported by SQL Server, Tableau analytics, and Agile delivery artifacts.
 
-Documentation: BRD, DoR/DoD, UAT Scripts
+---
 
-##🚀 Key Features
+## 🎯 Objectives
 
-Automated Replenishment Logic: SQL views monitor Quantity_OnHand against Reorder_Level to trigger low-cost shipping before stock-outs occur.
+- Reduce shipping costs caused by reactive replenishment
+- Enforce HIPAA-compliant data handling across logistics workflows
+- Improve visibility into surgical kit availability and readiness
+- Establish a scalable, auditable logistics data model
+
+---
+
+## 🛠️ Tech Stack
+
+**Data & Backend**
+- Microsoft SQL Server (DDL, Views, Joins, Aggregations)
+
+**Analytics & Visualization**
+- Tableau Public (Geospatial Mapping, Cost & Urgency Analysis)
+
+**Delivery & Documentation**
+- Jira (Agile / Scrum)
+- Confluence
+- BRD, Definition of Ready (DoR), Definition of Done (DoD)
+- UAT Scripts
+
+---
+
+## 🧩 My Role (Hybrid Business Analyst / Systems Analyst)
+
+- Led end-to-end **requirements discovery and analysis**
+- Designed **As-Is and To-Be process models**
+- Defined the **relational data model and audit logic**
+- Partnered with stakeholders to balance cost, compliance, and operational needs
+- Supported Agile delivery through documentation, backlog refinement, and UAT
+
+---
+
+## 🚀 Key Features & Capabilities
+
+### 🔄 Automated Replenishment Logic
+- SQL views continuously monitor `Quantity_OnHand` vs `Reorder_Level`
+- Proactive alerts enable **low-cost standard shipping** before stock-outs
+- Reduces dependency on last-minute expedited shipments
+
+---
+
+### 🔐 HIPAA-Compliant De-Identification
+- Removed patient names and direct identifiers from logistics workflows
+- Introduced a **`Case_Ref_Number` protocol** for all courier and shipping communications
+- Ensures compliance while maintaining traceability and auditability
+
+---
+
+### 🧰 Surgical Kit Readiness & Compliance
+- Tracks `Last_ServiceDate` and maintenance status of surgical kits
+- Ensures all tools are **sterilized, serviced, and compliant** prior to hospital delivery
+- Reduces OR delays and clinical risk
+
+---
+
+### 🌍 Geospatial Command Center
+- Tableau dashboard visualizes hospital locations geographically
+- Color-coded **Stock Urgency Indicators** provide real-time operational oversight
+- Enables warehouse teams to prioritize fulfillment efficiently
+
+---
+
+## 🗂️ Data Model & Architecture
+
+The relational design centers on a **Shipments fact table**, linked to:
+- Hospitals
+- Surgical Kits
+
+This structure provides:
+- A clear audit trail
+- Separation of operational data from sensitive patient information
+- Scalable reporting and compliance enforcement
+
+*(ERD diagrams included in the repository)*
+
+---
+
+## 📊 Business Impact
+
+**💰 Cost Reduction**
+- Reduced expedited shipping by **~80%** through proactive inventory alerts
+
+**🛡️ Regulatory Safety**
+- Eliminated HIPAA breach risks by removing PII from courier workflows
+
+**⚙️ Operational Efficiency**
+- Improved “Time-to-OR” by ensuring serviced kits are available locally
+- Increased visibility for warehouse and operations teams
+
+## 📁 Repository Structure
+
+/discovery-and-analysis
+└── BPMN process maps
+└── ERD diagrams
+
+/requirements-documentation
+└── BRD
+└── DoR / DoD
 
 
-HIPAA De-identification: Replaced PII (Patient Names) with a Case_ref_number protocol for all external shipping and courier communications.
+/technical-specifications
+└── SQL DDL scripts
+└── Reporting & audit views
+
+/testing-and-uat
+└── UAT scripts
+└── Tableau 
+└── Dashboard screenshots
+
+---
 
 
-Predictive Maintenance: Tracks Last_ServiceDate to ensure all surgical tools are compliant and sterilized before hospital delivery.
+---
+
+## 📌 Key Takeaway
+
+This project demonstrates how **strong business analysis, systems thinking, and data governance** can:
+- Reduce operational costs
+- Enforce regulatory compliance
+- Improve healthcare delivery readiness
+
+It reflects a **real-world, enterprise-grade approach** to logistics modernization in a regulated environment.
+
+---
 
 
-Geospatial Command Center: A Tableau dashboard that maps hospital locations and color-codes "Stock Urgency" for real-time warehouse oversight.
-
-##📊 Database Schema (ERD)
-
-The relational model centers on a Shipments fact table connecting Hospitals and Kits, ensuring a clear audit trail.
-
-##📈 Business Impact
-
-Cost Reduction: Minimized "Expedited" shipping by 80% through proactive inventory alerts.
-
-Regulatory Safety: Eliminated HIPAA breach risks by removing sensitive data from the courier workflow.
-
-Operational Efficiency: Reduced "Time-to-OR" by ensuring kits are serviced and available locally.
-
-##📁 Repository Contents
-
-**/Discovery and Analysis:** BPMN Process Maps and ERD Diagrams.
-
-**/Requirements Documentaion:** DoR, DoD, BRD all done using Confluence.
-
-**/Technical Specifications:** Table creation (DDL) and Audit Views.
-
-**/Testing and UAT:** Tableau Workbook (packaged) and Dashboard Screenshots.
