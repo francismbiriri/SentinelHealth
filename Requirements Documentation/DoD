@@ -1,0 +1,32 @@
+## 🔴 Definition of Done (DoD)
+
+A Jira ticket is considered **Done** only when **all** of the following acceptance criteria are satisfied:
+
+### 🔗 Relational Integrity
+- All **Foreign Key relationships** are implemented and validated between:
+  - `Shipment_ID`
+  - `Hospital_ID`
+  - `Kit_ID`
+- No orphaned records exist across shipments, hospitals, or kits.
+
+### 📊 Visualization & Reporting
+- The **Tableau Map dashboard**:
+  - Correctly renders hospital locations using validated `Geo_Coordinates`
+  - Applies color-coding based on the approved **Stock Urgency logic**
+  - Accurately reflects underlying SQL view outputs
+
+### 🛡️ Auditability & Compliance
+- A `HIPAA_Compliance` boolean/bit field is present in the shipment record.
+- Compliance status is correctly evaluated against:
+  - Shipment assignment
+  - Delivery timestamp
+- All records are traceable without exposing PII.
+
+### ✅ Peer Review & UAT Validation
+- SQL **Audit View** results reconcile with Tableau dashboard metrics at **100% accuracy**.
+- Results are reviewed and signed off by:
+  - Business Analyst
+  - Operations / Warehouse representative
+- UAT evidence is documented and stored in Confluence.
+
+---
